@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link :to="{ name: 'Home' }">Get Request</router-link> |
-    <router-link :to="{ name: 'About' }">PUT Request</router-link>
+    <router-link :to="{ name: 'Put' }">PUT Request</router-link>
   </div>
   <router-view />
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="put">
     <h4 class="italasized">This page uses the fetch() API**</h4>
   </div>
 </template>

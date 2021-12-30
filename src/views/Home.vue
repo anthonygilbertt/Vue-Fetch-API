@@ -1,23 +1,23 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <Main />
+    <Fetch />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Main from "@/components/Main.vue";
+import Fetch from "@/components/Fetch.vue";
 
 export default {
   name: "Home",
   components: {
-    Main,
+    Fetch,
   },
 };
 </script>
 <style>
 img {
-  height: 100px;
+  height: 70px;
 }
 </style>
