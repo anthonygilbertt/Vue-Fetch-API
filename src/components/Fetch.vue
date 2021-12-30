@@ -6,15 +6,18 @@
       <p>description: {{ explanation }}</p>
       <p>{{ path }}</p>
 
-      <iframe
-        width="560"
-        height="315"
-        :src="path"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <div v-if="video">
+        <iframe
+          width="560"
+          height="315"
+          :src="path"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div v-else><img :src="path" alt="" height="400" /></div>
     </div>
 
     <button @click="fetchData">Fetch Data</button>
@@ -31,6 +34,7 @@ export default {
     const explanation = ref("");
     const path = ref(null);
     const error = ref(null);
+    const video = ref(false);
 
     const fetchData = () => {
       try {
@@ -56,7 +60,7 @@ export default {
       }
     };
 
-    return { title, explanation, fetchData, path };
+    return { title, explanation, fetchData, path, video };
   },
 };
 </script>
