@@ -1,10 +1,16 @@
 <template>
-  <div class="hello">
+  <div class="skewed">
     <h3>NASA: Astronomy Picture of the Day</h3>
     <div v-if="!error">
-      <p>Title: {{ title }}</p>
-      <p>description: {{ explanation }}</p>
-      <p>{{ path }}</p>
+      <p>
+        <b><u>Title:</u></b> <i>"{{ title }}"</i>
+      </p>
+      <p>
+        <b><u>Description:</u></b> {{ explanation }}
+      </p>
+      <p>
+        <b><u>URL:</u></b> {{ path }}
+      </p>
 
       <div v-if="video">
         <iframe
@@ -65,7 +71,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -83,5 +89,17 @@ a {
 }
 h3 {
   text-decoration: underline;
+}
+.skewed {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: #2c3e50;
+
+  transform-origin: top right;
+  color: #42b983;
 }
 </style>

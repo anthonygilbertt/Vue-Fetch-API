@@ -1,11 +1,11 @@
 <template>
   <div class="csvdata">
-    <h3>NASA:</h3>
+    <h3>NASA: Global Average Temperature</h3>
     <div>
       <div v-if="video"></div>
       <div v-else></div>
-      <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-      <canvas id="myChart" width="400" height="400"></canvas>
+
+      <canvas id="myChart" width="800" height="400"></canvas>
     </div>
 
     <button @click="fetchData">Fetch Data</button>
@@ -22,6 +22,8 @@ export default {
   setup() {
     const error = ref(null);
     const video = ref(false);
+    const xlabels = ref([]);
+    const ytemps = ref([]);
 
     const fetchData = async () => {
       const response = await fetch("Zonal-Annual-Means.csv");
@@ -33,20 +35,24 @@ export default {
       table.forEach((row) => {
         const columns = row.split(",");
         const year = columns[0];
+        xlabels.value.push(year);
         const temp = columns[1];
+        ytemps.value.push(temp);
         console.log(year, temp);
       });
 
       const ctx = document.getElementById("myChart");
-
       const myChart = new Chart(ctx, {
-        type: "bar",
+        type: "line",
         data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: xlabels.value,
           datasets: [
             {
-              label: "# of Votes",
-              data: [12, 19, 3, 5, 2, 3],
+              label:
+                "Combined Land-Surface Air and Sea-Surface Water Temperature",
+              data: ytemps.value,
+              fill: false,
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
                 "rgba(54, 162, 235, 0.2)",
@@ -71,50 +77,21 @@ export default {
           scales: {
             y: {
               beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return value + "°";
+                },
+              },
             },
           },
         },
       });
+      // myChart();
       console.log(myChart);
-      //end of myChart function
     };
 
-    // async function chartIt() {
-    //   // Organize the `chart.js` related code line into a function
-    //   const data = await fetchData(); // Get resulting data from the getData() function.
-    //   const ctx = document.getElementById("myChart").getContext("2d");
-    //   new Chart(ctx, {
-    //     type: "line", // Switch the graph to a line chart
-    //     data: {
-    //       labels: data.xs, // Customize the label sources
-    //       datasets: [
-    //         {
-    //           label:
-    //             "Combined Land-Surface Air and Sea-Surface Water Temperature (℃)", // new name
-    //           data: data.ys, // Customize the data source for the Y-axis
-    //           fill: false, // Do not fill the line
-    //           backgroundColor: "rgba(255, 99, 132, 0.2)", // Adopt single color scheme across different datasets
-    //           borderColor: "rgba(255, 99, 132, 1)", // adopt single color scheme across different datasets
-    //           borderWidth: 1,
-    //         },
-    //       ],
-    //     },
-    //     options: {
-    //       scales: {
-    //         yAxes: [
-    //           {
-    //             ticks: {
-    //               // Include a ℃ sign in the ticks
-    //               callback: function (value, index, values) {
-    //                 return value + "℃";
-    //               },
-    //             },
-    //           },
-    //         ],
-    //       },
-    //     },
-    //   });
-    // }
+    //end of myChart function
+    // const xlabels = [];
 
     // return { fetchData, video, error, chartIt };
     return { video, error, fetchData };

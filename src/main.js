@@ -1,22 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+// import VueMapbox from "vue-mapbox";
+// import Mapbox from "mapbox-gl";
+
+
+
+
+// Vue.use(VueMapbox, { mapboxgl: Mapbox });
 
 createApp(App).use(router).mount('#app')
 
-
-
-
-
-
-// let app
-
-
-// this gets fired when the Auth State changes
-// for example: when when we "have a user"
-// (The user state changes)
-// if (!app) {
-//     app = createApp(App)
-//         .use(router)
-//         .mount('#app') //we don't want to mount until the auth state changes
-// }
+// createApp(App).use(VueMapbox, { mapboxgl: Mapbox }).mount('#app')
