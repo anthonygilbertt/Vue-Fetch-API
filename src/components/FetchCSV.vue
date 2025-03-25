@@ -8,7 +8,7 @@
       <canvas id="myChart" width="800" height="400"></canvas>
     </div>
 
-    <button @click="fetchData">Fetch Data</button>
+    <button class="button" @click="fetchData">Fetch Data</button>
   </div>
 </template>
 
@@ -117,5 +117,18 @@ a {
 }
 h3 {
   text-decoration: underline;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 </style>

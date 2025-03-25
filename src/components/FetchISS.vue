@@ -12,7 +12,7 @@
       </p>
     </div>
 
-    <button @click="fetchData">Fetch Data</button>
+    <button class="button" @click="fetchData">Fetch Data</button>
   </div>
 </template>
 
@@ -69,7 +69,18 @@ h3 {
   width: 100%;
   height: 80%;
   background: #2c3e50;
-
   color: #42b983;
+}
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 </style>
